@@ -45,4 +45,9 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		return repository.listaEmpleadoNombreApellidoIgualActualiza(nombre, apellido, idEmpleado);
 	}
 
+	@Override
+	public List<Empleado> listaConsultaEmpleado(int valEstado) {
+		return repository.listaConsultaEmpleado(valEstado);
+	}
+
 }
