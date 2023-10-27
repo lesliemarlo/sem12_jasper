@@ -1,4 +1,4 @@
-### Crud de Empleado con validaciones tipo Remote
+### Consultas
 
 ## Autor ✒️
 
