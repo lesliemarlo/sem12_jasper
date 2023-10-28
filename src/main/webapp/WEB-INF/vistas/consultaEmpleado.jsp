@@ -17,56 +17,58 @@
 </head>
 <body>
 <div class="container">
-	<h3>Consulta de Empleado</h3>
-	<div class="row" style="margin-top: 4%">  
-		<div class="col-md-6" >
-			<label class="control-label" for="id_nombres">Nombres y Apellidos</label>
-			<input class="form-control" id="id_nombres" name="nombres" type="text" maxlength="20"/>
-		</div>	
-		<div class="col-md-6" >
+<h3>Consulta Empleado</h3>
+
+	<div class="row" style="margin-top: 2%">
+		<div class="col-sm-6">
+			<label class="control-label" for="id_nombre">Nombre y Apellidos</label>
+			<input class="form-control" type="text" id="id_nombre" name="nombre" placeholder="Ingrese el nombre" maxlength="40">
+		</div>
+		<div class="col-sm-6">
 			<label class="control-label" for="id_estado">Estado</label>
-			<input class="form-control" id="id_estado" name="estado" type="checkbox" checked="checked" />
-		</div>	  
-	</div>
-	<div class="row" style="margin-top: 1%">
-		<div class="col-md-6" >
-			<label class="control-label" for="id_fecha_desde">Fecha Nacimiento:  Desde</label>
-			<input class="form-control" id="id_fecha_desde" name="fechaNacimientoDesde" type="date"/>
-		</div>
-		<div class="col-md-6" >
-			<label class="control-label" for="id_fecha_hasta"> Hasta </label>
-			<input class="form-control" id="id_fecha_hasta" name="fechaNacimientoHasta" type="date"/>
-		</div>
-	</div>	
-	<div class="row" style="margin-top: 1%">		
-		<div class="col-md-6" >
-			<label class="control-label" for="id_pais">País</label>
-			<select id="id_pais" name="pais" class='form-control'>
-		           <option value=" ">[Seleccione]</option>    
-			</select>
+			<input class="form-control" type="checkbox" id="id_estado" name="estado"  checked="checked">
 		</div>
 	</div>
-	<div class="row" style="margin-top: 4%">  
-		<div class="col-md-12" align="center">
-			<button type="button" class="btn btn-primary" id="id_btn_filtra">FILTRA</button>
-		</div>	
+	
+	<div class="row" style="margin-top: 2%">
+		<div class="col-sm-6">
+			<label class="control-label" for="id_fecha_desde">Fecha Nacimiento (Desde)</label>
+			<input class="form-control" type="date" id="id_fecha_desde" name="desde" >
+		</div>
+		<div class="col-sm-6">
+			<label class="control-label" for="id_fecha_hasta">Fecha Nacimiento (Hasta)</label>
+			<input class="form-control" type="date" id="id_fecha_hasta" name="hasta" >
+		</div>
 	</div>
-	<div class="row" style="margin-top: 4%">
-			<table id="id_table" class="table table-striped table-bordered" >
-				<thead>
+	
+	<div class="row" style="margin-top: 2%">
+			<div class="col-sm-6">
+				<label class="col-lg-3 control-label" for="id_pais">País</label>
+		        <select id="id_pais" name="pais" class='form-control'>
+				   	<option value=" ">[Seleccione]</option>    
+				</select>
+			</div>
+	</div>
+	
+	<div class="row" style="margin-top: 2%" align="center">
+		<button id="id_filtro" type="button" class="btn btn-primary" >Filtrar</button>
+	</div>
+	
+	<div class="row" style="margin-top: 5%">
+				<table id="id_table" class="table table-striped table-bordered" >
+					<thead>
 						<tr>
 							<th style="width: 5%" >ID</th>
 							<th style="width: 22%">Nombre</th>
 							<th style="width: 23%">Apellidos</th>
 							<th style="width: 15%">Fecha Nacimiento</th>
 							<th style="width: 15%">País</th>
-							<th style="width: 10%">Estado</th>
+							<th style="width: 15%">Estado</th>
 						</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-	</div>
-	
+					</thead>
+						<tbody></tbody>
+				</table>
+	</div>	
 </div>
 <script type="text/javascript">
 $.getJSON("listaPais", {}, function(data){
@@ -75,14 +77,11 @@ $.getJSON("listaPais", {}, function(data){
 	});
 });
 
-$("#id_btn_filtra").click(function(){
-	var valEsActivo = $("#id_estado").is(":checked");
-	var valEstado = valEsActivo ? '1': '0';
+$("#id_filtro").click(function(){
+	var var_estado = $('#id_estado').is(":checked") ? '1' : '0';
 	
-	console.log(">>> valEstado >>> " + valEstado);
-	
-	$.getJSON("consultaEmpleado", {"valEstado":valEstado}, function(lista){
-		agregarGrilla(lista);
+	$.getJSON("consultaEmpleado", {"estado":var_estado}, function(data){
+		agregarGrilla(data);
 	});
 });
 
@@ -103,17 +102,20 @@ function agregarGrilla(lista){
 				{data: "fechaNacimiento"},
 				{data: "pais.nombre"},
 				{data: function(row, type, val, meta){
-				    var salida = (row.estado == 1) ? 'Activo' : 'Inactvo' ;
+					var salida= (row.estado == 1) ? "Activo" : "Inactivo";
 					return salida;
-				},className:'text-center'},	
+				},className:'text-center'},
 			]                                     
-	 });
+	    });
 }
 
 </script>
 
 </body>
 </html>
+
+
+
 
 
 

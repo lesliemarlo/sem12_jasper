@@ -17,7 +17,7 @@ public interface EmpleadoService {
 	public abstract List<Empleado> listaPorNombreApellidoIgual(String nombre, String apellido); 
 	public abstract List<Empleado> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int idEmpleado);
 	
-	//Consulta
-	public abstract List<Empleado> listaConsultaEmpleado(int valEstado);
 	
+	//Consulta
+	public List<Empleado> listaEmpleadoConsulta(int idEstado);
 }

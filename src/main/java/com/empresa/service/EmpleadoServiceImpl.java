@@ -46,8 +46,8 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 	}
 
 	@Override
-	public List<Empleado> listaConsultaEmpleado(int valEstado) {
-		return repository.listaConsultaEmpleado(valEstado);
+	public List<Empleado> listaEmpleadoConsulta(int idEstado) {
+		return repository.listaEmpleadoConsulta(idEstado);
 	}
 
 }

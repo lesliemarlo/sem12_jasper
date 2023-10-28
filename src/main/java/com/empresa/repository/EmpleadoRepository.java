@@ -21,8 +21,6 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer>{
 	public List<Empleado> listaEmpleadoNombreApellidoIgualActualiza(String nombre, String apellido, int idEmpleado);
 
 	//Consulta
-	@Query("select e from Empleado e where e.estado = ?1 ")
-	public List<Empleado> listaConsultaEmpleado(int valEstado);
-	
-	
+	@Query("select e from Empleado e where e.estado = ?1")
+	public List<Empleado> listaEmpleadoConsulta(int idEstado);
 }

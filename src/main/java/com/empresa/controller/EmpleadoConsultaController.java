@@ -14,8 +14,8 @@ import com.empresa.service.EmpleadoService;
 public class EmpleadoConsultaController {
 
 	@Autowired
-	private EmpleadoService empleadoService;
-
+	private EmpleadoService service;
+	
 	@GetMapping("/verConsultaEmpleado")
 	public String verInicio() {
 		return "consultaEmpleado";
@@ -23,8 +23,13 @@ public class EmpleadoConsultaController {
 	
 	@GetMapping("/consultaEmpleado")
 	@ResponseBody
-	public List<Empleado> listaEmpleado(int valEstado){
-		List<Empleado> lstSalida = empleadoService.listaConsultaEmpleado(valEstado);
+	public List<Empleado> listaEmpleado(int estado){
+		List<Empleado> lstSalida = service.listaEmpleadoConsulta(estado);
 		return lstSalida;
 	}
+	
 }
+
+
+
+
