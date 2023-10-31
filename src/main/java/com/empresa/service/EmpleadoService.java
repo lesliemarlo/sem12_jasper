@@ -1,5 +1,6 @@
 package com.empresa.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,6 @@ public interface EmpleadoService {
 	public abstract List<Empleado> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int idEmpleado);
 	
 	
-	//Consulta
-	public List<Empleado> listaEmpleadoConsulta(int idEstado);
+	//consultas
+	public abstract List<Empleado> listaConsultaEmpleado(int estado, int idPais,  String nomApe, Date fecDesde, Date fecHasta);
 }

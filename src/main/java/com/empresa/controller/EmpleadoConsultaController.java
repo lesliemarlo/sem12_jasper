@@ -1,5 +1,6 @@
 package com.empresa.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ import com.empresa.service.EmpleadoService;
 public class EmpleadoConsultaController {
 
 	@Autowired
-	private EmpleadoService service;
-	
+	private EmpleadoService empleadoService;
+
 	@GetMapping("/verConsultaEmpleado")
 	public String verInicio() {
 		return "consultaEmpleado";
@@ -23,13 +24,15 @@ public class EmpleadoConsultaController {
 	
 	@GetMapping("/consultaEmpleado")
 	@ResponseBody
-	public List<Empleado> listaEmpleado(int estado){
-		List<Empleado> lstSalida = service.listaEmpleadoConsulta(estado);
+	public List<Empleado> listaEmpleado(int estado, int idPais, String nomApe, String fecDesde, String fecHasta){
+		List<Empleado> lstSalida = empleadoService.listaConsultaEmpleado(
+									estado, 
+									idPais, 
+									"%"+nomApe+"%", 
+									Date.valueOf(fecDesde),
+									Date.valueOf(fecHasta));
 		return lstSalida;
 	}
 	
+	
 }
-
-
-
-

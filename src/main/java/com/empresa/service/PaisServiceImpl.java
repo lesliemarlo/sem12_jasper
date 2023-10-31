@@ -16,7 +16,7 @@ public class PaisServiceImpl implements PaisService{
 	
 	@Override
 	public List<Pais> listaPais() {
-		return repository.findAll();
+		return repository.findByOrderByNombreAsc();
 	}
 
 }

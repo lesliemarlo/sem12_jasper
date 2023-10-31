@@ -1,5 +1,6 @@
 package com.empresa.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,8 +47,8 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 	}
 
 	@Override
-	public List<Empleado> listaEmpleadoConsulta(int idEstado) {
-		return repository.listaEmpleadoConsulta(idEstado);
+	public List<Empleado> listaConsultaEmpleado(int estado, int idPais,String nomApe, Date fecDesde, Date fecHasta) {
+		return repository.listaConsultaEmpleado(estado, idPais, nomApe, fecDesde, fecHasta);
 	}
 
 }
