@@ -99,8 +99,8 @@ $("#id_btn_filtra").click(function(){
 	$.getJSON("consultaEmpleado", {"estado": varEstado, 
 								   "idPais": varPais, 
 								   "nomApe": varNomApe, 
-								   "fecDesde": varFecDesde, 
-								   "fecHasta": varFecHasta }, function(data){
+								   "desde": varFecDesde, 
+								   "hasta": varFecHasta }, function(data){
 		agregarGrilla(data);
 	});
 });
