@@ -21,4 +21,5 @@ public interface EmpleadoService {
 	
 	//consultas
 	public abstract List<Empleado> listaConsultaEmpleado(int estado, int idPais,  String nomApe, Date fecDesde, Date fecHasta);
+
 }
